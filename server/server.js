@@ -114,7 +114,13 @@ app.post("/api/clients", authenticate, (req, res) => {
 
 // Delete client
 app.delete("/api/clients/:id", authenticate, (req, res) => {
-  const id = req.params.id;
+  const id = Number(req.params.id);
+
+  // console.log("req.params.id:", id, "| type:", typeof id);
+  // console.log("clients array:", clients);
+  // clients.forEach((client) => {
+  //   console.log("client.id:", client.id, "| type:", typeof client.id);
+  // });
 
   const originalLength = clients.length;
 
