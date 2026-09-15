@@ -140,6 +140,7 @@ function App() {
 
     if (response.ok) {
       loadClients();
+      loadProjects();
     }
   }
 
