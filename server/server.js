@@ -100,7 +100,7 @@ app.post("/api/clients", authenticate, (req, res) => {
   }
 
   const newClient = {
-    id: clients.length + 1,
+    id: clients.length > 0 ? clients[clients.length - 1].id + 1 : 1,
     name,
     email
   };
@@ -118,9 +118,9 @@ app.delete("/api/clients/:id", authenticate, (req, res) => {
 
   // console.log("req.params.id:", id, "| type:", typeof id);
   // console.log("clients array:", clients);
-  // clients.forEach((client) => {
-  //   console.log("client.id:", client.id, "| type:", typeof client.id);
-  // });
+  clients.forEach((client) => {
+    console.log("client.id:", client.id, "| type:", typeof client.id);
+  });
 
   const originalLength = clients.length;
 
