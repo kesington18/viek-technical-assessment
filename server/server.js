@@ -100,7 +100,7 @@ app.post("/api/clients", authenticate, (req, res) => {
   }
 
   const newClient = {
-    id: clients.length > 0 ? clients[clients.length - 1].id + 1 : 1,
+    id: Math.max(...clients.map(c => c.id), 0) + 1,
     name,
     email
   };
