@@ -29,7 +29,7 @@ let clients = [
   }
 ];
 
-const projects = [
+let projects = [
   {
     id: 1,
     name: "Website Development",
@@ -134,6 +134,8 @@ app.delete("/api/clients/:id", authenticate, (req, res) => {
     });
   }
 
+  projects = projects.filter(project => project.clientId !== id)
+
   res.json({
     message: "Client deleted successfully"
   });
@@ -147,7 +149,7 @@ app.get("/api/projects", authenticate, (req, res) => {
 
   if (clientId) {
     result = projects.filter(
-      (project) => project.clientId === clientId
+      (project) => project.clientId === Number(clientId)
     );
   }
 
